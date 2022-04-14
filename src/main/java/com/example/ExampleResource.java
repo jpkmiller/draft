@@ -1,11 +1,11 @@
 package com.example;
 
+import com.example.impl1.*;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/")
 public class ExampleResource {
@@ -13,16 +13,44 @@ public class ExampleResource {
     @Inject
     EPPHandler handler;
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String execute() {
-        handler.removeAll();
-        handler.addStage(new ExampleEventSource1())
-                .addStage(new ExampleEventStage1())
-                .addStage(new ExampleEventStage2())
-                .addStage(new ExampleEventSink());
+    @Inject
+    EPPConfig config;
 
-        handler.execute();
-        return "Hello";
+    @GET
+    @Path("/exec")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String exec() {
+        this.handler.exec();
+        return "Success";
+    }
+
+    @GET
+    @Path("/config")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> getConfig () {
+        return this.config.getStages();
+    }
+
+    @POST
+    public void setConfig(EPPConfig config) {
+        System.out.println(config);
+        for (String stage : config.getStages()) {
+            handler.addStage(stringToStage(stage));
+        }
+    }
+
+    private EPPStage stringToStage (String stage) {
+        switch (stage) {
+            case "source":
+                return new ExampleEventSource1();
+            case "stage1":
+                return new ExampleEventStage1();
+            case "stage2":
+                return new ExampleEventStage2();
+            case "sink":
+                return new ExampleEventSink();
+            default:
+                return null;
+        }
     }
 }

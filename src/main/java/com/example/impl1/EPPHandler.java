@@ -1,10 +1,6 @@
-package com.example;
-
-import io.quarkus.arc.All;
+package com.example.impl1;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Instance;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,19 +13,14 @@ public class EPPHandler {
         stages = new ArrayList<>();
     }
 
-    public void execute() {
+    public void exec() {
         Event e = null;
         for (EPPStage stage : stages) {
             e = stage.execute(e);
         }
     }
 
-    public EPPHandler addStage(EPPStage stage) {
+    public void addStage(EPPStage stage) {
         stages.add(stage);
-        return this;
-    }
-
-    public void removeAll() {
-        stages.clear();
     }
 }
