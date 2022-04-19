@@ -1,20 +1,16 @@
-package com.example;
-
-import com.example.impl1.*;
+package com.example.impl1;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Path("/")
-public class ExampleResource {
+@Path("/v1")
+public class Impl1Resource {
 
     @Inject
     EPPHandler handler;
-
-    @Inject
-    EPPConfig config;
 
     @GET
     @Path("/exec")
@@ -25,21 +21,27 @@ public class ExampleResource {
     }
 
     @GET
-    @Path("/config")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getConfig () {
-        return this.config.getStages();
+    public List<String> getConfig() {
+        System.err.println(this.handler.getStages());
+        return this.handler.getStages();
+    }
+
+    @PUT
+    public List<String> addStage(List<String> config) {
+        for (String stage : config) {
+            handler.addStage(stringToStage(stage));
+        }
+        return this.handler.getStages();
     }
 
     @POST
-    public void setConfig(EPPConfig config) {
-        System.out.println(config);
-        for (String stage : config.getStages()) {
-            handler.addStage(stringToStage(stage));
-        }
+    public List<String> setStage(List<String> config) {
+        this.handler.setStages(config.stream().map(this::stringToStage).collect(Collectors.toList()));
+        return this.handler.getStages();
     }
 
-    private EPPStage stringToStage (String stage) {
+    private EPPStage stringToStage(String stage) {
         switch (stage) {
             case "source":
                 return new ExampleEventSource1();

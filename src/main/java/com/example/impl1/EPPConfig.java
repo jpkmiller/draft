@@ -1,22 +1,20 @@
 package com.example.impl1;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.util.ArrayList;
-import java.util.List;
 
 @ApplicationScoped
 public class EPPConfig {
-    List<String> stages;
+    String[] stages;
 
     public EPPConfig () {
-        this.stages = new ArrayList<>();
+        this.stages = new String[0];
     }
 
     public EPPConfig(String[] stages) {
-        this.stages = List.of(stages);
+        this.stages = stages;
     }
 
-    public List<String> getStages() {
+    public String[] getStages() {
         return stages;
     }
 }

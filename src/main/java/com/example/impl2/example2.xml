@@ -1,0 +1,12 @@
+<stages>
+    <stage name="source" kind="source">
+        <stage name="stage1" kind="stage">
+            <stage name="stage2" kind="stage">
+                <stage name="sink" kind="sink" />
+            </stage>
+            <stage name="stage3" kind="stage">
+                <stage name="sink2" kind="sink" />
+            </stage>
+        </stage>
+    </stage>
+</stages>
