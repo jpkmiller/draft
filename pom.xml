@@ -6,6 +6,12 @@
     <groupId>com.example</groupId>
     <artifactId>mini-pipeline</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>impl1And2</module>
+        <module>impl3</module>
+    </modules>
+
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <failsafe.useModulePath>false</failsafe.useModulePath>
