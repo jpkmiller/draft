@@ -15,8 +15,8 @@ public class Impl1Resource {
     @GET
     @Path("/exec")
     @Produces(MediaType.TEXT_PLAIN)
-    public String exec() {
-        this.handler.exec();
+    public String execute() {
+        this.handler.execute();
         return "Success";
     }
 

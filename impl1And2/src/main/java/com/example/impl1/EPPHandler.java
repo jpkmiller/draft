@@ -14,7 +14,7 @@ public class EPPHandler {
         stages = new ArrayList<>();
     }
 
-    public void exec() {
+    public void execute() {
         Event e = null;
         for (EPPStage stage : stages) {
             e = stage.execute(e);

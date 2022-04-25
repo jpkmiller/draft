@@ -9,6 +9,7 @@ public class ExampleEventSink2 extends AbstractEPPStage {
     @Override
     public Event execSelf(Event e) {
         System.out.println("Sink 2: Event called " + e.amountCalled);
+        System.out.println("Sink 2: Event " + e);
         return e;
     }
 }

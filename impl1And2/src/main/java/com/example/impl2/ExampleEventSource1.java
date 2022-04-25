@@ -11,7 +11,7 @@ public class ExampleEventSource1 extends AbstractEPPStage {
         return new Event() {
             @Override
             public String toString() {
-                return "Event from Source 1";
+                return "Event from Source 1: " + this.hashCode();
             }
 
             @Override
