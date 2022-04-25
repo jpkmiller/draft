@@ -1,62 +1,47 @@
-# mini-pipeline Project
+# mini-pipeline
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Development
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-
-## Running the application in dev mode
-
-You can run your application in dev mode that enables live coding using:
-
-```shell script
+```shell
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-
-## Packaging and running the application
-
-The application can be packaged using:
+or 
 
 ```shell script
 ./mvnw package
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory. Be aware that it’s not an _über-jar_ as
-the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## Implementations
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+### [Implementation 1](impl1And2/src/main/java/com/example/impl1)
 
-If you want to build an _über-jar_, execute the following command:
+#### Pro
 
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+- really easy to implement and maintain
+- easy to extend and add more stages since `Source`, `Stage` and `Sink` use the same interface
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+#### Cons
 
-## Creating a native executable
+- only serial execution
+    - no branches possible
+        - no parallel steps possible
+        - no multiple sinks possible
+        - no multiple sources possible
 
-You can create a native executable using:
 
-```shell script
-./mvnw package -Pnative
-```
+### [Implementation 2](impl1And2/src/main/java/com/example/impl2)
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+#### Pro
 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+- serial AND parallel execution
+    - solves problems of impl1
+- easy to extend
+-
 
-You can then execute your native executable with: `./target/mini-pipeline-1.0-SNAPSHOT-runner`
+#### Cons
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+-
 
-## Provided Code
 
-### RESTEasy Reactive
-
-Easily start your Reactive RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+### [Implementation 3](impl3)
