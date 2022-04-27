@@ -1,4 +1,4 @@
-package com.example;
+package impl3a;
 
 import javax.ws.rs.*;
 import java.util.HashMap;
