@@ -8,8 +8,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>impl1And2</module>
+        <module>impl1-and-2</module>
         <module>impl3a-manager-service</module>
+        <module>impl3a-epp</module>
     </modules>
 
     <properties>
