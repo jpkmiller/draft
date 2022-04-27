@@ -1,4 +1,4 @@
-package com.example.impl2;
+package impl2;
 
 public class ExampleEventStage1 extends AbstractEPPStage {
 

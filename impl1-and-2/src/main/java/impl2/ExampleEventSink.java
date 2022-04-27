@@ -1,4 +1,4 @@
-package com.example.impl2;
+package impl2;
 
 public class ExampleEventSink extends AbstractEPPStage {
     public ExampleEventSink(String name, String kind) {

@@ -1,4 +1,4 @@
-package com.example.impl2;
+package impl2;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

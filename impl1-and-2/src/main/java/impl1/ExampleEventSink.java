@@ -1,4 +1,4 @@
-package com.example.impl1;
+package impl1;
 
 public class ExampleEventSink implements EPPStage {
     @Override

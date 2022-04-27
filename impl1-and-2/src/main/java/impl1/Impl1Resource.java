@@ -1,4 +1,4 @@
-package com.example.impl1;
+package impl1;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

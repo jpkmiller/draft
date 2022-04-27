@@ -1,4 +1,4 @@
-package com.example.impl2;
+package impl2;
 
 import java.util.ArrayList;
 import java.util.List;

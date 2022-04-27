@@ -1,4 +1,4 @@
-package com.example.impl1;
+package impl1;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
