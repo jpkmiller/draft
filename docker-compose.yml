@@ -10,9 +10,9 @@ services:
     ports:
       - "8080:8080"
 
-  impl3:
+  impl3a-manager-service:
     build:
-      context: impl3
+      context: impl3a-manager-service
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8081"

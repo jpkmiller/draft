@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>impl1And2</module>
-        <module>impl3</module>
+        <module>impl3a-manager-service</module>
     </modules>
 
     <properties>
