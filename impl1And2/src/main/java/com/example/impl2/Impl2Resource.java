@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static io.netty.handler.codec.http.HttpHeaders.Values.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path("/v2")
 public class Impl2Resource {
