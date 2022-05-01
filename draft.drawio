@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-05-01T13:00:29.061Z" agent="5.0 (X11)" etag="QKKwG0ud3dV_8QgD9AZq" version="17.5.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-01T13:00:50.941Z" agent="5.0 (X11)" etag="oxsCuxn4p0GOxXs2VKJ9" version="17.5.0" type="github">
   <diagram id="XYTEaQDV3CCzF-M_5A2S" name="Page-1">
     <mxGraphModel dx="1583" dy="911" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
       <root>
@@ -725,8 +725,8 @@
         <mxCell id="aRcXMA_YCSUUPR6hCGXh-188" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="1257" y="1958" width="38" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="YY82sQLR2Kyw1nTSdVlI-2" value="- Warum kann die erste Stage nicht direkt mit dem Broker kommunizieren?&lt;br&gt;- Woher weiß Stage 1, dass sie die erste ist&lt;br&gt;-&amp;nbsp;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="157" y="1888" width="210" height="80" as="geometry" />
+        <mxCell id="YY82sQLR2Kyw1nTSdVlI-2" value="- Warum kann die erste Stage nicht direkt mit dem Broker kommunizieren?&lt;br&gt;- Woher weiß Stage 1, dass sie die erste ist" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="157" y="1913" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-1" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="163" y="2187.9700000000003" width="84.49" height="30" as="geometry" />
@@ -807,9 +807,6 @@
           <mxGeometry x="-0.2353" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="vWTeGu8KnH3kGjtYQDAz-51" value="- Warum kann die erste Stage nicht direkt mit dem Broker kommunizieren?&lt;br&gt;- Woher weiß Stage 1, dass sie die erste ist&lt;br&gt;-&amp;nbsp;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="170" y="2340" width="210" height="80" as="geometry" />
         </mxCell>
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-52" value="ManagerService" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;" vertex="1" parent="1">
           <mxGeometry x="553" y="2204.4700000000003" width="178" height="50" as="geometry" />
