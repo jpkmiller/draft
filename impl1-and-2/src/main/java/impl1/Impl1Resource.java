@@ -6,6 +6,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+
 @Path("/v1")
 public class Impl1Resource {
 
@@ -13,7 +15,7 @@ public class Impl1Resource {
     EPPHandler handler;
 
     @GET
-    @Path("/exec")
+    @Path("/execute")
     @Produces(MediaType.TEXT_PLAIN)
     public String execute() {
         this.handler.execute();
@@ -21,13 +23,15 @@ public class Impl1Resource {
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     public List<String> getConfig() {
         System.err.println(this.handler.getStages());
         return this.handler.getStages();
     }
 
     @PUT
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     public List<String> addStage(List<String> config) {
         for (String stage : config) {
             handler.addStage(stringToStage(stage));
@@ -36,6 +40,8 @@ public class Impl1Resource {
     }
 
     @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     public List<String> setStage(List<String> config) {
         this.handler.setStages(config.stream().map(this::stringToStage).collect(Collectors.toList()));
         return this.handler.getStages();

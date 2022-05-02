@@ -14,9 +14,9 @@ public class Impl2Resource {
     List<AbstractEPPStage> stages = new ArrayList<>();
 
     @GET
-    @Path("/exec")
+    @Path("/execute")
     @Produces(MediaType.TEXT_PLAIN)
-    public String exec() {
+    public String execute() {
         for (AbstractEPPStage stage : stages) {
             stage.exec();
         }
@@ -26,19 +26,21 @@ public class Impl2Resource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> getStages() {
+        System.out.println(this.stages);
         return this.stages.stream().map(AbstractEPPStage::toString).collect(Collectors.toList());
     }
 
     @PUT
     @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     public List<String> addStage(EPPStage stage) {
         this.stages.add(stageBuilder(stage));
-        System.out.println(this.stages);
         return this.getStages();
     }
 
     @POST
     @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     public List<String> setStage(EPPStage stage) {
         this.stages.clear();
         return this.addStage(stage);
