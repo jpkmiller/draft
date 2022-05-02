@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>impl1-and-2</module>
-        <module>impl3a-manager-service</module>
-        <module>impl3a-epp</module>
+        <module>impl5-manager-service</module>
+        <module>impl5-source</module>
     </modules>
 
     <properties>
@@ -47,6 +47,10 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye.reactive</groupId>
+            <artifactId>smallrye-mutiny-vertx-web-client</artifactId>
         </dependency>
     </dependencies>
     <build>

@@ -3,18 +3,27 @@ version: '3'
 services:
   impl1-and-2:
     build:
-      context: impl1And2
+      context: impl1-and-2
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8080"
     ports:
       - "8080:8080"
 
-  impl3a-manager-service:
+  impl5-manager-service:
     build:
-      context: impl3a-manager-service
+      context: impl5-manager-service
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8081"
     ports:
       - "8081:8081"
+
+  impl5-source:
+    build:
+      context: impl5-source
+      dockerfile: src/main/docker/Dockerfile.jvm
+    expose:
+      - "8082"
+    ports:
+      - "8082:8082"
