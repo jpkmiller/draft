@@ -1,13 +1,9 @@
 package impl5;
 
-import impl5.EPPStage;
 import org.jboss.resteasy.reactive.RestResponse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,12 +11,11 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 
-@Path("/v5")
+@Path("/")
 public class Manager {
 
-    Set<EPPStage> registeredStages;
+    Set<EPPStage> registeredStages = new HashSet<>();
     Map<String, List<EPPStage>> config = new HashMap<>();
-
 
     @POST
     public void loadConfig() {
@@ -37,6 +32,7 @@ public class Manager {
     @Consumes(APPLICATION_JSON)
     @Produces(TEXT_PLAIN)
     public RestResponse<String> register(EPPStage stage) {
+        System.out.println(stage);
         this.registeredStages.add(stage);
         return RestResponse.ResponseBuilder.ok(
                         this.registeredStages

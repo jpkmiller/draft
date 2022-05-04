@@ -1,5 +1,6 @@
 package impl5;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -8,16 +9,18 @@ public class EPPStage {
     final String name;
     final String kind;
     final String location;
-    final List<EPPStage> stages;
-    boolean available;
+    final List<EPPStage> stages = new ArrayList<>();
+    boolean available = true;
 
-
-    public EPPStage(String name, String kind, String location, EPPStage[] stages) {
+    public EPPStage(String name, String kind, String location) {
         this.name = name;
         this.kind = kind;
         this.location = location;
-        this.stages = Arrays.asList(stages);
-        this.available = true;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " (" + this.kind + "): " + this.location;
     }
 
     @Override
