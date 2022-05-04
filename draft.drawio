@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-02T16:01:37.234Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="bKNuNeraaM1YPX52auEP" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-04T13:50:31.690Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="ryXHQq0ADil91zfsGQ3K" version="17.4.6" type="github">
   <diagram id="XYTEaQDV3CCzF-M_5A2S" name="Page-1">
-    <mxGraphModel dx="1138" dy="671" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
+    <mxGraphModel dx="1511" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -750,15 +750,15 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vWTeGu8KnH3kGjtYQDAz-10" value="Broker" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=90;" parent="1" vertex="1">
-          <mxGeometry x="373" y="2256.9700000000003" width="37.5" height="125" as="geometry" />
+        <mxCell id="vWTeGu8KnH3kGjtYQDAz-10" value="Broker" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="310" y="2276.76" width="150" height="53.24" as="geometry" />
         </mxCell>
-        <mxCell id="vWTeGu8KnH3kGjtYQDAz-11" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="vWTeGu8KnH3kGjtYQDAz-4" target="vWTeGu8KnH3kGjtYQDAz-10" edge="1">
+        <mxCell id="vWTeGu8KnH3kGjtYQDAz-11" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="vWTeGu8KnH3kGjtYQDAz-4" target="vWTeGu8KnH3kGjtYQDAz-10" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="353" y="2321.9700000000003" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="vWTeGu8KnH3kGjtYQDAz-12" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="vWTeGu8KnH3kGjtYQDAz-8" target="vWTeGu8KnH3kGjtYQDAz-10" edge="1">
+        <mxCell id="vWTeGu8KnH3kGjtYQDAz-12" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="vWTeGu8KnH3kGjtYQDAz-8" target="vWTeGu8KnH3kGjtYQDAz-10" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="245.4020222170525" y="2295.2087312186977" as="sourcePoint" />
           </mxGeometry>
@@ -1010,6 +1010,12 @@
         </mxCell>
         <mxCell id="ygy0Dr_dH88TyYo-HF1P-7" value="Erstellung neuer Services:&lt;br&gt;&lt;br&gt;Für das Loadbalancing ist das Kubernetes Cluster verantwortlich. Der Kubernetes Autoscaler startet neue Services, sobald bestimmte Bedingungen erfüllt sind. Das kann zum Beispiel sein, wenn eine bestimmte Anzahl an Nachrichten unbearbeitet in der Datenquelle liegen.&lt;br&gt;Dann startet der Autoscaler jeweils eine Source, die Stages und die Sink.&lt;br&gt;&lt;div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="278.5" y="2070" width="260" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-10" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="410.5" y="2302.9700000000003" width="38" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-14" value="QEvent" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="2258.47" width="49" height="23" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
