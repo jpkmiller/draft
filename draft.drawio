@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-05-04T13:50:31.690Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36" etag="ryXHQq0ADil91zfsGQ3K" version="17.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-05-08T16:54:12.970Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36" etag="yRS-_T5ZC66GFi1GAUvB" version="18.0.2" type="github">
   <diagram id="XYTEaQDV3CCzF-M_5A2S" name="Page-1">
-    <mxGraphModel dx="1511" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
+    <mxGraphModel dx="528" dy="301" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -925,7 +925,7 @@
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-232" value="Manager" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=11;" parent="1" vertex="1">
           <mxGeometry x="574.08" y="2200" width="360.92" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-8" value="+ field: List&lt;EPPStage&gt; registeredStages&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="vWTeGu8KnH3kGjtYQDAz-232">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-8" value="+ field: List&lt;EPPStage&gt; registeredStages&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-232" vertex="1">
           <mxGeometry y="26" width="360.92" height="26" as="geometry" />
         </mxCell>
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-233" value="+ field: Map&lt;String, List&lt;EPPStage&gt;&gt; config&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-232" vertex="1">
@@ -946,10 +946,10 @@
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-240" value="+ field: String name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-238" vertex="1">
           <mxGeometry y="52" width="255.92" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-3" value="+ field: String kind" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="vWTeGu8KnH3kGjtYQDAz-238">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-3" value="+ field: String kind" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-238" vertex="1">
           <mxGeometry y="78" width="255.92" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-1" value="+ field: List&lt;EPPStage&gt; stages" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" vertex="1" parent="vWTeGu8KnH3kGjtYQDAz-238">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-1" value="+ field: List&lt;EPPStage&gt; stages" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-238" vertex="1">
           <mxGeometry y="104" width="255.92" height="26" as="geometry" />
         </mxCell>
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-258" value="+ field: Boolean available" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=11;" parent="vWTeGu8KnH3kGjtYQDAz-238" vertex="1">
@@ -990,7 +990,7 @@
         <mxCell id="vWTeGu8KnH3kGjtYQDAz-257" value="&lt;div&gt;Fetchen der Daten:&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Eine Source holt sich die Informationen von einer Datenquelle. Im nächsten Schritt markiert die Source in der Datenquelle, dass diese Daten verarbeitet werden. Es wird ein status von 0 auf 1 gesetzt.&lt;/div&gt;&lt;div&gt;Sobald die Sink die Daten fertig verarbeitet hat, setzt sie den status auf 2. Wenn ein Fehler in der Saga auftritt, wird der status auf 0 zurückgesetzt.&lt;/div&gt;&lt;div&gt;Wenn der status größer 0 ist, holt sich die Source dieses Datum nicht.&lt;br&gt;&lt;/div&gt;&amp;nbsp;Alternative: Nutzung eines ready-bits." style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="10" y="2360" width="260" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.203;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=diamondThin;startFill=1;endArrow=open;endFill=0;" edge="1" parent="1" source="vWTeGu8KnH3kGjtYQDAz-238" target="vWTeGu8KnH3kGjtYQDAz-238">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.203;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=diamondThin;startFill=1;endArrow=open;endFill=0;" parent="1" source="vWTeGu8KnH3kGjtYQDAz-238" target="vWTeGu8KnH3kGjtYQDAz-238" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1138" y="2160" />
@@ -998,24 +998,60 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-5" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ygy0Dr_dH88TyYo-HF1P-2">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-5" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ygy0Dr_dH88TyYo-HF1P-2" vertex="1" connectable="0">
           <mxGeometry x="-0.6686" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-6" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="ygy0Dr_dH88TyYo-HF1P-2">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-6" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ygy0Dr_dH88TyYo-HF1P-2" vertex="1" connectable="0">
           <mxGeometry x="0.7285" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-7" value="Erstellung neuer Services:&lt;br&gt;&lt;br&gt;Für das Loadbalancing ist das Kubernetes Cluster verantwortlich. Der Kubernetes Autoscaler startet neue Services, sobald bestimmte Bedingungen erfüllt sind. Das kann zum Beispiel sein, wenn eine bestimmte Anzahl an Nachrichten unbearbeitet in der Datenquelle liegen.&lt;br&gt;Dann startet der Autoscaler jeweils eine Source, die Stages und die Sink.&lt;br&gt;&lt;div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-7" value="Erstellung neuer Services:&lt;br&gt;&lt;br&gt;Für das Loadbalancing ist das Kubernetes Cluster verantwortlich. Der Kubernetes Autoscaler startet neue Services, sobald bestimmte Bedingungen erfüllt sind. Das kann zum Beispiel sein, wenn eine bestimmte Anzahl an Nachrichten unbearbeitet in der Datenquelle liegen.&lt;br&gt;Dann startet der Autoscaler jeweils eine Source, die Stages und die Sink.&lt;br&gt;&lt;div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="278.5" y="2070" width="260" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-10" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-10" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="410.5" y="2302.9700000000003" width="38" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ygy0Dr_dH88TyYo-HF1P-14" value="QEvent" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="ygy0Dr_dH88TyYo-HF1P-14" value="QEvent" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="60" y="2258.47" width="49" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-3" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;" edge="1" target="T-Seoym0EpQlzb--kWRr-5" parent="1" source="vWTeGu8KnH3kGjtYQDAz-52">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1018" y="2445" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-9" value="POST heartbeat" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="T-Seoym0EpQlzb--kWRr-3">
+          <mxGeometry x="-0.1315" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-4" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;entryX=0.5;entryY=0.5;endSize=6;strokeWidth=1;sketch=0;dashed=1;" edge="1" target="T-Seoym0EpQlzb--kWRr-5" parent="1" source="vWTeGu8KnH3kGjtYQDAz-71">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1050" y="2470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-5" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;resizable=0;points=[];outlineConnect=0;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="1033" y="2440" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-6" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;dashed=1;" edge="1" parent="1" source="vWTeGu8KnH3kGjtYQDAz-68" target="T-Seoym0EpQlzb--kWRr-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1106.1842105263158" y="2620" as="sourcePoint" />
+            <mxPoint x="1048" y="2455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-7" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;dashed=1;" edge="1" parent="1" source="vWTeGu8KnH3kGjtYQDAz-36" target="T-Seoym0EpQlzb--kWRr-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1116.1842105263158" y="2630" as="sourcePoint" />
+            <mxPoint x="1058" y="2465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T-Seoym0EpQlzb--kWRr-8" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=halfCircle;endFill=0;endSize=6;strokeWidth=1;sketch=0;dashed=1;" edge="1" parent="1" source="vWTeGu8KnH3kGjtYQDAz-122" target="T-Seoym0EpQlzb--kWRr-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1126.1842105263158" y="2640" as="sourcePoint" />
+            <mxPoint x="1068" y="2475" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
