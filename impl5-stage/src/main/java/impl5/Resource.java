@@ -29,8 +29,8 @@ public class Resource {
     @Consumes(MediaType.WILDCARD)
     @Produces(MediaType.TEXT_PLAIN)
     public Uni<String> register() {
-        System.out.println("Source registering");
+        System.out.println("Stage registering");
         String port = ConfigProvider.getConfig().getValue("quarkus.http.port", String.class);
-        return this.endpoint.register(new EPPStage("source1", "source", "http://impl5-source:" + port));
+        return this.endpoint.register(new EPPStage("stage1", "stage", "http://impl5-source:" + port));
     }
 }

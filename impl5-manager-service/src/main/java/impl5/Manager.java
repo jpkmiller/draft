@@ -17,6 +17,20 @@ public class Manager {
     Set<EPPStage> registeredStages = new HashSet<>();
     Map<String, List<EPPStage>> config = new HashMap<>();
 
+    public Manager() {
+        dummyConfig();
+    }
+
+    private void dummyConfig() {
+        List<EPPStage> config1 = new ArrayList<>();
+        EPPStage source = new EPPStage("source1", "source",
+                List.of(new EPPStage("stage1", "stage", List.of(
+                        new EPPStage("sink1", "sink")
+                ))));
+        config1.add(source);
+        this.config.put("dummyConfig1", config1);
+    }
+
     @POST
     public void loadConfig() {
     }
@@ -34,6 +48,12 @@ public class Manager {
     public RestResponse<String> register(EPPStage stage) {
         System.out.println(stage);
         this.registeredStages.add(stage);
+        return getStages();
+    }
+
+    @GET
+    @Produces(APPLICATION_JSON)
+    public RestResponse<String> getStages() {
         return RestResponse.ResponseBuilder.ok(
                         this.registeredStages
                                 .stream()
