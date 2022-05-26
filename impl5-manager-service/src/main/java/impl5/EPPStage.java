@@ -6,26 +6,26 @@ public class EPPStage {
     final String name;
     final String kind;
     final String location;
-    final List<EPPStage> stages;
+    final List<EPPStage> subStages;
     boolean available = true;
 
     private EPPStage(String name, String kind) {
         this(name, kind, "");
     }
 
-    private EPPStage(String name, String kind, List<EPPStage> stages) {
-        this(name, kind, "", stages);
+    private EPPStage(String name, String kind, List<EPPStage> subStages) {
+        this(name, kind, "", subStages);
     }
 
     public EPPStage(String name, String kind, String location) {
         this(name, kind, location, Collections.emptyList());
     }
 
-    private EPPStage(String name, String kind, String location, List<EPPStage> stages) {
+    private EPPStage(String name, String kind, String location, List<EPPStage> subStages) {
         this.name = name;
         this.kind = kind;
         this.location = location;
-        this.stages = stages;
+        this.subStages = subStages;
     }
 
     @Override
@@ -47,6 +47,6 @@ public class EPPStage {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, kind, location, stages);
+        return Objects.hash(name, kind, location, subStages);
     }
 }
