@@ -19,6 +19,8 @@ public class Resource {
     @Inject
     Endpoint endpoint;
 
+    String locationNextStage;
+
     @PostConstruct
     public Uni<String> postConstruct() {
         return register();
@@ -32,5 +34,14 @@ public class Resource {
         System.out.println("Source registering");
         String port = ConfigProvider.getConfig().getValue("quarkus.http.port", String.class);
         return this.endpoint.register(new EPPStage("source1", "source", "http://impl5-source:" + port));
+    }
+
+    @POST
+    @Path("/nextStage")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String nextStage(String location) {
+        this.locationNextStage = location;
+        return this.locationNextStage;
     }
 }

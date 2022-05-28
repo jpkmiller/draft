@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   impl5-manager-service:
     build:
       context: impl5-manager-service
@@ -10,6 +9,10 @@ services:
       - "8081"
     ports:
       - "8081:8081"
+    depends_on:
+      - impl5-source
+      - impl5-sink
+      - impl5-stage
 
   impl5-source:
     build:
@@ -19,8 +22,6 @@ services:
       - "8082"
     ports:
       - "8082:8082"
-    depends_on:
-      - impl5-manager-service
 
   impl5-stage:
     build:
@@ -30,8 +31,6 @@ services:
       - "8083"
     ports:
       - "8083:8083"
-    depends_on:
-      - impl5-manager-service
 
   impl5-sink:
     build:
@@ -41,5 +40,3 @@ services:
       - "8084"
     ports:
       - "8084:8084"
-    depends_on:
-      - impl5-manager-service
