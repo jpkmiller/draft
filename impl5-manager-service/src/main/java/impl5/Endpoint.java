@@ -1,0 +1,21 @@
+package impl5;
+
+import javax.enterprise.context.ApplicationScoped;
+
+import io.vertx.mutiny.core.Vertx;
+import io.vertx.mutiny.ext.web.client.WebClient;
+
+@ApplicationScoped
+public class Endpoint {
+
+    private final WebClient client;
+
+    public Endpoint() {
+        Vertx vertx = Vertx.vertx();
+        this.client = WebClient.create(vertx);
+    }
+
+    public WebClient getClient() {
+        return this.client;
+    }
+}
