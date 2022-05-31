@@ -3,34 +3,32 @@ package impl5;
 import java.util.*;
 
 public class EPPStage {
-    final String name;
-    final String kind;
-    final String location;
-    final List<EPPStage> subStages;
-    boolean available = true;
+    public String name;
+    public String type;
+    public String location;
+    public List<EPPStage> subStages;
+    private boolean available = true;
 
-    private EPPStage(String name, String kind) {
-        this(name, kind, "");
+    public EPPStage () {}
+
+    public EPPStage(String name, String type, String location) {
+        this(name, type, location, Collections.emptyList());
     }
 
-    private EPPStage(String name, String kind, List<EPPStage> subStages) {
-        this(name, kind, "", subStages);
+    public EPPStage(String name, String type, String location, EPPStage[] subStages) {
+        this(name, type, location, Arrays.asList(subStages));
     }
 
-    public EPPStage(String name, String kind, String location) {
-        this(name, kind, location, Collections.emptyList());
-    }
-
-    private EPPStage(String name, String kind, String location, List<EPPStage> subStages) {
+    public EPPStage(String name, String type, String location, List<EPPStage> subStages) {
         this.name = name;
-        this.kind = kind;
+        this.type = type;
         this.location = location;
         this.subStages = subStages;
     }
 
     @Override
     public String toString() {
-        return this.name + " (" + this.kind + "): " + this.location;
+        return this.name + " (" + this.type + "): " + this.location;
     }
 
     @Override
@@ -42,11 +40,11 @@ public class EPPStage {
             return false;
         }
         EPPStage eppStage = (EPPStage) o;
-        return name.equals(eppStage.name) && kind.equals(eppStage.kind) && location.equals(eppStage.location);
+        return name.equals(eppStage.name) && type.equals(eppStage.type) && location.equals(eppStage.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, kind, location, subStages);
+        return Objects.hash(name, type, location, subStages);
     }
 }
