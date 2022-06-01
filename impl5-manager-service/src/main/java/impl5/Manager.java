@@ -8,14 +8,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Link;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -35,27 +38,31 @@ public class Manager {
     Endpoint endpoint;
 
     /**
-     * Integer is the hash of the EPPStage
+     * String is the hashcode of the EPPStage
      * List<String> is a list of hostnames and ports
      */
-    HashMap<Integer, List<String>> subStageMap = new HashMap<>();
+    HashMap<String, List<String>> subStageMap = new HashMap<>();
+
+    List<EPPStage> flatConfig = new LinkedList<>();
 
     private static final Logger LOGGER = Logger.getLogger("Manager");
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Starting the Application ...");
         readConfigFromFile();
+        flattenConfig();
         buildSubStageMap();
         dispatchSubStage();
     }
 
+    /**
+     * Read the config file and return the config object
+     * 
+     * @return the config object
+     */
     @GET
     @Path("/readConfig")
     @Produces(TEXT_PLAIN)
-    /**
-     * Read the config file and return the config object
-     * @return the config object
-     */
     public EPPStage readConfigFromFile() {
         LOGGER.info("Reading config from /config.json ...");
         try {
@@ -81,15 +88,23 @@ public class Manager {
         buildSubStageMapR(this.config);
     }
 
+    /**
+     * Recursive builder.
+     * Called by buildSubStageMap.
+     * 
+     * @param stage
+     */
     private void buildSubStageMapR(EPPStage stage) {
         if (stage == null) {
             return;
         }
 
-        /* use hashCode here because it's the simplest way to ensure a unique identifier */
-        Integer stageHashCode = stage.hashCode();
+        /*
+         * use hashCode here because it's the simplest way to ensure a unique identifier
+         */
+        String stageHashCode = stage.getHash();
         if (!this.subStageMap.containsKey(stageHashCode)) {
-            this.subStageMap.put(stageHashCode, Collections.emptyList());
+            this.subStageMap.put(stageHashCode, new LinkedList<>());
         }
 
         stage.subStages.forEach(subStage -> {
@@ -101,30 +116,88 @@ public class Manager {
         });
     }
 
+    /**
+     * Inform the stages about their subStages.
+     */
     @GET
     @Path("/dispatch")
     public void dispatchSubStage() {
         dispatchSubStageR(this.config);
     }
 
+    /**
+     * Recursive dispatcher.
+     * Called by dispatchSubStage.
+     * 
+     * @param stage
+     */
     private void dispatchSubStageR(EPPStage stage) {
         if (stage == null) {
             return;
         }
 
         List<String> subStages = getSubStage(stage);
-        LOGGER.info("Dispatching subStages (" + subStages + ") to" + stage.name + " ...");
+        LOGGER.info("Dispatching subStages (" + subStages + ") to " + stage.name + " ...");
         WebClient client = endpoint.getClient();
-        
-        Uni<HttpResponse<Buffer>> response = client.postAbs("http://" + stage.location + "/subStage")
-            .sendJson(getSubStage(stage));
+
+        Uni<HttpResponse<Buffer>> response = client.postAbs("http://" + stage.location + "/nextStage")
+                .sendJson(getSubStage(stage));
 
         response.subscribe().with(item -> LOGGER.info("Received " + item.statusCode()));
-        
 
         stage.subStages.forEach(subStage -> {
             dispatchSubStageR(subStage);
         });
+    }
+
+    /**
+     * 
+     * @return
+     */
+    @GET
+    @Path("/flatConfig")
+    @Produces(APPLICATION_JSON)
+    public List<EPPStage> getFlatConfig() {
+        return this.flatConfig;
+    }
+
+    /**
+     * Get flattened config.
+     * @return
+     */
+    public List<EPPStage> flattenConfig() {
+        this.flatConfig = flattenConfigR(this.config);
+        return this.flatConfig;
+    }
+
+    private LinkedList<EPPStage> flattenConfigR(EPPStage stage) {
+        if (stage == null) {
+            return new LinkedList<>();
+        }
+
+        LinkedList<EPPStage> stages = new LinkedList<>();
+        stages.add(stage);
+        stage.subStages.forEach(subStage -> {
+            stages.addAll(flattenConfigR(subStage));
+        });
+
+        return stages;
+    }
+
+    /**
+     * 
+     */
+    @POST
+    @Path("/heartBeat")
+    @Consumes(TEXT_PLAIN)
+    public void heartBeat(String location) {
+        for (EPPStage stage : this.flatConfig) {
+            if (stage.location.equals(location)) {
+                LOGGER.info("Received heartbeat from " + stage.name + " from " + location + " ...");
+                stage.available = true;
+                break;
+            }
+        }
     }
 
     @GET
@@ -137,7 +210,7 @@ public class Manager {
     @GET
     @Path("/subStageMap")
     @Produces(APPLICATION_JSON)
-    public HashMap<Integer, List<String>> getSubStageMap() {
+    public HashMap<String, List<String>> getSubStageMap() {
         return this.subStageMap;
     }
 
@@ -146,7 +219,7 @@ public class Manager {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     public List<String> getSubStage(EPPStage stage) {
-        Integer stageHashCode = stage.hashCode();
+        String stageHashCode = stage.getHash();
         List<String> subStages = this.subStageMap.get(stageHashCode);
         return subStages == null ? Collections.emptyList() : subStages;
     }

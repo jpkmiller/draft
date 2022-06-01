@@ -7,7 +7,7 @@ public class EPPStage {
     public String type;
     public String location;
     public List<EPPStage> subStages;
-    private boolean available = true;
+    public boolean available = false;
 
     public EPPStage () {}
 
@@ -43,8 +43,7 @@ public class EPPStage {
         return name.equals(eppStage.name) && type.equals(eppStage.type) && location.equals(eppStage.location);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, type, location, subStages);
+    public String getHash() {
+        return this.name + Objects.hash(this.type, this.location);
     }
 }

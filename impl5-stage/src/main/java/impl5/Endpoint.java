@@ -20,11 +20,4 @@ public class Endpoint {
     public WebClient getClient() {
         return this.client;
     }
-
-    public Uni<String> register(EPPStage stage) {
-        return this.client.postAbs("http://impl5-manager-service:8081/register")
-                .sendJson(stage)
-                .map(HttpResponse::bodyAsString);
-    }
-
 }

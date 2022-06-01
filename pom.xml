@@ -8,11 +8,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>impl1-and-2</module>
+        <!-- <module>impl1-and-2</module> -->
         <module>impl5-manager-service</module>
-        <module>impl5-source</module>
         <module>impl5-stage</module>
-        <module>impl5-sink</module>
     </modules>
 
     <properties>

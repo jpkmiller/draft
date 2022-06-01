@@ -1,8 +1,0 @@
-{
-    "impl5-source:8080": {
-        "name": "source",
-        "type": "source",
-        "location": "impl5-source:8082",
-        "subStages": []
-    }
-}

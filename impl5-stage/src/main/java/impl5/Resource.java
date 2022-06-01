@@ -1,19 +1,19 @@
 package impl5;
 
-import io.smallrye.mutiny.Uni;
-import org.eclipse.microprofile.config.ConfigProvider;
-import org.jboss.resteasy.reactive.RestResponse;
+import java.util.Arrays;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+
+import org.jboss.logging.Logger;
+
+import io.quarkus.runtime.StartupEvent;
 
 @Path("/")
 @ApplicationScoped
@@ -22,29 +22,21 @@ public class Resource {
     @Inject
     Endpoint endpoint;
 
-    String locationNextStage;
+    private static final Logger LOGGER = Logger.getLogger("Impl5-Source-Resource");
 
-    @PostConstruct
-    public Uni<String> postConstruct() {
-        return register();
-    }
+    String[] locationNextStages;
 
-    @POST
-    @Path("/register")
-    @Consumes(MediaType.WILDCARD)
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> register() {
-        System.out.println("Stage registering");
-        String port = ConfigProvider.getConfig().getValue("quarkus.http.port", String.class);
-        return this.endpoint.register(new EPPStage("stage1", "stage", "http://impl5-source:" + port));
+    void onStart(@Observes StartupEvent ev) {
+        LOGGER.info("Starting the Application ...");
     }
 
     @POST
     @Path("/nextStage")
-    @Consumes(MediaType.TEXT_PLAIN)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String nextStage(String location) {
-        this.locationNextStage = location;
-        return this.locationNextStage;
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String[] nextStage(String[] locations) {
+        LOGGER.info("Receiving locations " + Arrays.toString(locations));
+        this.locationNextStages = locations;
+        return this.locationNextStages;
     }
 }

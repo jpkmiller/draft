@@ -8,33 +8,13 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - impl5-source
-      - impl5-sink
       - impl5-stage
 
-  impl5-source:
+  impl5-stage:
     build:
-      context: impl5-source
+      context: impl5-stage
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8082"
     ports:
       - "8082:8082"
-
-  #impl5-stage:
-  #  build:
-   #   context: impl5-sink
-   #   dockerfile: src/main/docker/Dockerfile.jvm
-    #expose:
-     # - "8083"
-    #ports:
-     # - "8083:8083"
-
-  #impl5-sink:
-   # build:
-    # context: impl5-sink
-     # dockerfile: src/main/docker/Dockerfile.jvm
-    #expose:
-     # - "8084"
-    #ports:
-     # - "8084:8084"
