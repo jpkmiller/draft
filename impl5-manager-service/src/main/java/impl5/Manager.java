@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.event.Observes;
@@ -18,8 +18,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Link;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.jboss.logging.Logger;
@@ -43,7 +41,7 @@ public class Manager {
      */
     HashMap<String, List<String>> subStageMap = new HashMap<>();
 
-    List<EPPStage> flatConfig = new LinkedList<>();
+    List<EPPStage> flatConfig = new ArrayList<>();
 
     private static final Logger LOGGER = Logger.getLogger("Manager");
 
@@ -102,9 +100,9 @@ public class Manager {
         /*
          * use hashCode here because it's the simplest way to ensure a unique identifier
          */
-        String stageHashCode = stage.getHash();
+        String stageHashCode = stage.getUniqueId();
         if (!this.subStageMap.containsKey(stageHashCode)) {
-            this.subStageMap.put(stageHashCode, new LinkedList<>());
+            this.subStageMap.put(stageHashCode, new ArrayList<>());
         }
 
         stage.subStages.forEach(subStage -> {
@@ -163,6 +161,7 @@ public class Manager {
 
     /**
      * Get flattened config.
+     * 
      * @return
      */
     public List<EPPStage> flattenConfig() {
@@ -170,12 +169,12 @@ public class Manager {
         return this.flatConfig;
     }
 
-    private LinkedList<EPPStage> flattenConfigR(EPPStage stage) {
+    private ArrayList<EPPStage> flattenConfigR(EPPStage stage) {
         if (stage == null) {
-            return new LinkedList<>();
+            return new ArrayList<>();
         }
 
-        LinkedList<EPPStage> stages = new LinkedList<>();
+        ArrayList<EPPStage> stages = new ArrayList<>();
         stages.add(stage);
         stage.subStages.forEach(subStage -> {
             stages.addAll(flattenConfigR(subStage));
@@ -219,7 +218,7 @@ public class Manager {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     public List<String> getSubStage(EPPStage stage) {
-        String stageHashCode = stage.getHash();
+        String stageHashCode = stage.getUniqueId();
         List<String> subStages = this.subStageMap.get(stageHashCode);
         return subStages == null ? Collections.emptyList() : subStages;
     }

@@ -1,8 +1,6 @@
 package impl5;
 
-import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.core.Vertx;
-import io.vertx.mutiny.ext.web.client.HttpResponse;
 import io.vertx.mutiny.ext.web.client.WebClient;
 
 import javax.enterprise.context.ApplicationScoped;

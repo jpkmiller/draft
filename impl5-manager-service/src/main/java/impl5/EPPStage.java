@@ -43,7 +43,7 @@ public class EPPStage {
         return name.equals(eppStage.name) && type.equals(eppStage.type) && location.equals(eppStage.location);
     }
 
-    public String getHash() {
-        return this.name + Objects.hash(this.type, this.location);
+    public String getUniqueId() {
+        return this.name + this.location;
     }
 }
