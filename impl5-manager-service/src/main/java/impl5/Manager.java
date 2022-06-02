@@ -10,12 +10,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,7 +50,7 @@ public class Manager {
         readConfigFromFile();
         flattenConfig();
         buildSubStageMap();
-        dispatchSubStage();
+        dispatchSubstage();
     }
 
     /**
@@ -118,9 +118,15 @@ public class Manager {
      * Inform the stages about their subStages.
      */
     @GET
-    @Path("/dispatch")
-    public void dispatchSubStage() {
-        dispatchSubStageR(this.config);
+    @Path("/dispatchHeartbeat")
+    public void dispatchHeartbeat() {
+        dispatchR(this.config, "/", (stage) -> "{}");
+    }
+
+    @GET
+    @Path("/dispatchSubstage")
+    public void dispatchSubstage() {
+        dispatchR(this.config, "/nextStage", (stage) -> getSubStage(stage));
     }
 
     /**
@@ -128,23 +134,23 @@ public class Manager {
      * Called by dispatchSubStage.
      * 
      * @param stage
+     * @return 
      */
-    private void dispatchSubStageR(EPPStage stage) {
+    private <T> void dispatchR(EPPStage stage, String query, Function<EPPStage, T> fn) {
         if (stage == null) {
             return;
         }
 
-        List<String> subStages = getSubStage(stage);
-        LOGGER.info("Dispatching subStages (" + subStages + ") to " + stage.name + " ...");
+        LOGGER.info("Dispatching " + query + " to " + stage.name + " at " + stage.location +  " ...");
         WebClient client = endpoint.getClient();
 
-        Uni<HttpResponse<Buffer>> response = client.postAbs("http://" + stage.location + "/nextStage")
-                .sendJson(getSubStage(stage));
+        Uni<HttpResponse<Buffer>> response = client.postAbs("http://" + stage.location + query)
+                .sendJson(fn.apply(stage));
 
-        response.subscribe().with(item -> LOGGER.info("Received " + item.statusCode()));
+        response.subscribe().with(item -> LOGGER.info("Received " + item.statusCode() + " ..."));
 
         stage.subStages.forEach(subStage -> {
-            dispatchSubStageR(subStage);
+            dispatchR(subStage, query, fn);
         });
     }
 
@@ -183,22 +189,6 @@ public class Manager {
         return stages;
     }
 
-    /**
-     * 
-     */
-    @POST
-    @Path("/heartBeat")
-    @Consumes(TEXT_PLAIN)
-    public void heartBeat(String location) {
-        for (EPPStage stage : this.flatConfig) {
-            if (stage.location.equals(location)) {
-                LOGGER.info("Received heartbeat from " + stage.name + " from " + location + " ...");
-                stage.available = true;
-                break;
-            }
-        }
-    }
-
     @GET
     @Path("/config")
     @Produces(APPLICATION_JSON)
@@ -222,4 +212,5 @@ public class Manager {
         List<String> subStages = this.subStageMap.get(stageHashCode);
         return subStages == null ? Collections.emptyList() : subStages;
     }
+
 }

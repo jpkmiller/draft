@@ -1,14 +1,24 @@
 package impl5;
 
-public class EPPStage {
-    public final String name;
-    public final String kind;
-    public final String location;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+public class EPPStage extends AbstractEPPStage {
+
+    public EPPStage() {
+        super(new ArrayList<>());
+    }
 
 
-    public EPPStage(String name, String kind, String location) {
-        this.name = name;
-        this.kind = kind;
-        this.location = location;
+    public EPPStage(List<String> stagesLocations) {
+        super(stagesLocations);
+    }
+
+    @Override
+    protected Event execSelf(Event e) {
+        return new Event(e.data + " hallo ");
     }
 }

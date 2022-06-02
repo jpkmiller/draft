@@ -1,17 +1,20 @@
 package impl5;
 
 import java.util.Arrays;
+import java.util.List;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.reactive.RestResponse;
 
 import io.quarkus.runtime.StartupEvent;
 
@@ -19,24 +22,42 @@ import io.quarkus.runtime.StartupEvent;
 @ApplicationScoped
 public class Resource {
 
-    @Inject
-    Endpoint endpoint;
-
     private static final Logger LOGGER = Logger.getLogger("Impl5-Source-Resource");
 
-    String[] locationNextStages;
+    @Inject
+    EPPStage stage;
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Starting the Application ...");
     }
 
+    @GET
+    @Path("/stages")
+    @Produces(APPLICATION_JSON)
+    public List<String> getNextStages () {
+        return this.stage.stagesLocations;
+    }
+
     @POST
     @Path("/nextStage")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String[] nextStage(String[] locations) {
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    public List<String> nextStage(String[] locations) {
         LOGGER.info("Receiving locations " + Arrays.toString(locations));
-        this.locationNextStages = locations;
-        return this.locationNextStages;
+        this.stage.stagesLocations = List.of(locations);
+        return this.stage.stagesLocations;
+    }
+
+    @POST
+    @Path("/exec")
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
+    public RestResponse<Event> exec(Event e) {
+        LOGGER.info("Receiving Event " + e.data);
+        Event resultEvent = stage.exec(e);
+        if (resultEvent == null) {
+            return RestResponse.serverError();
+        }
+        return RestResponse.ok(resultEvent);
     }
 }

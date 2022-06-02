@@ -2,25 +2,5 @@
   "name": "source",
   "type": "stage",
   "location": "impl5-stage:8082",
-  "subStages": [
-    {
-      "name": "stage1",
-      "type": "stage",
-      "location": "impl5-stage:8082",
-      "subStages": [
-        {
-          "name": "sink2b",
-          "type": "stage",
-          "location": "impl5-stage:8082",
-          "subStages": []
-        }
-      ]
-    },
-    {
-      "name": "sink1a",
-      "type": "stage",
-      "location": "impl5-stage:8082",
-      "subStages": []
-    }
-  ]
+  "subStages": []
 }
