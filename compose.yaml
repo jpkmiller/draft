@@ -1,7 +1,7 @@
 services:
-  impl5-manager-service:
+  manager-service:
     build:
-      context: impl5-manager-service
+      context: manager-service
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8081"
@@ -11,18 +11,18 @@ services:
       - impl5-stage
       - impl5-stage2
 
-  impl5-stage:
+  stage:
     build:
-      context: impl5-stage
+      context: stage
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8082"
     ports:
       - "8082:8082"
 
-  impl5-stage2:
+  stage2:
     build:
-      context: impl5-stage2
+      context: stage2
       dockerfile: src/main/docker/Dockerfile.jvm
     expose:
       - "8083"
