@@ -1,6 +1,8 @@
 package impl5;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class EPPStage {
     public String name;
@@ -9,7 +11,8 @@ public class EPPStage {
     public List<EPPStage> subStages;
     public boolean available = false;
 
-    public EPPStage () {}
+    public EPPStage() {
+    }
 
     public EPPStage(String name, String type, String location) {
         this(name, type, location, Collections.emptyList());

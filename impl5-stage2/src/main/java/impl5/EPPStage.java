@@ -38,7 +38,7 @@ public class EPPStage {
         /* get next event from list (FIFO) and execute it */
         Event e = this.events.remove(0);
 
-        e = new Event(e.data + " ist");
+        e = new Event(e.data + " cool.");
         LOGGER.info("Executed Event " + e + " with data: " + e.data);
         execOthers(e);
         this.exec();

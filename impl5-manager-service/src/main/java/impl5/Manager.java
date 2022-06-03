@@ -1,16 +1,12 @@
 package impl5;
 
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.quarkus.runtime.StartupEvent;
+import io.smallrye.mutiny.Uni;
+import io.vertx.mutiny.core.buffer.Buffer;
+import io.vertx.mutiny.ext.web.client.HttpResponse;
+import io.vertx.mutiny.ext.web.client.WebClient;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -18,32 +14,31 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.Function;
 
-import org.jboss.logging.Logger;
-import io.vertx.mutiny.core.buffer.Buffer;
-import io.vertx.mutiny.ext.web.client.HttpResponse;
-import io.quarkus.runtime.StartupEvent;
-import io.smallrye.mutiny.Uni;
-import io.vertx.mutiny.ext.web.client.WebClient;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 @Path("/")
 public class Manager {
 
+    private static final Logger LOGGER = Logger.getLogger("Manager");
     EPPStage config;
-
     @Inject
     Endpoint endpoint;
-
     /**
      * String is the hashcode of the EPPStage
      * List<String> is a list of hostnames and ports
      */
     HashMap<String, List<String>> subStageMap = new HashMap<>();
-
     List<EPPStage> flatConfig = new ArrayList<>();
-
-    private static final Logger LOGGER = Logger.getLogger("Manager");
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Starting the Application ...");
@@ -55,7 +50,7 @@ public class Manager {
 
     /**
      * Read the config file and return the config object
-     * 
+     *
      * @return the config object
      */
     @GET
@@ -89,7 +84,7 @@ public class Manager {
     /**
      * Recursive builder.
      * Called by buildSubStageMap.
-     * 
+     *
      * @param stage
      */
     private void buildSubStageMapR(EPPStage stage) {
@@ -132,16 +127,16 @@ public class Manager {
     /**
      * Recursive dispatcher.
      * Called by dispatchSubStage.
-     * 
+     *
      * @param stage
-     * @return 
+     * @return
      */
     private <T> void dispatchR(EPPStage stage, String query, Function<EPPStage, T> fn) {
         if (stage == null) {
             return;
         }
 
-        LOGGER.info("Dispatching " + query + " to " + stage.name + " at " + stage.location +  " ...");
+        LOGGER.info("Dispatching " + query + " to " + stage.name + " at " + stage.location + " ...");
         WebClient client = endpoint.getClient();
 
         Uni<HttpResponse<Buffer>> response = client.postAbs("http://" + stage.location + query)
@@ -154,10 +149,6 @@ public class Manager {
         });
     }
 
-    /**
-     * 
-     * @return
-     */
     @GET
     @Path("/flatConfig")
     @Produces(APPLICATION_JSON)
@@ -167,8 +158,6 @@ public class Manager {
 
     /**
      * Get flattened config.
-     * 
-     * @return
      */
     public List<EPPStage> flattenConfig() {
         this.flatConfig = flattenConfigR(this.config);

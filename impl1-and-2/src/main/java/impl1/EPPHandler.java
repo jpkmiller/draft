@@ -25,11 +25,11 @@ public class EPPHandler {
         stages.add(stage);
     }
 
-    public void setStages(List<EPPStage> stages) {
-        this.stages = stages;
-    }
-
     public List<String> getStages() {
         return this.stages.stream().map(Object::toString).collect(Collectors.toList());
+    }
+
+    public void setStages(List<EPPStage> stages) {
+        this.stages = stages;
     }
 }

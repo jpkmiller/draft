@@ -9,6 +9,7 @@ services:
       - "8081:8081"
     depends_on:
       - impl5-stage
+      - impl5-stage2
 
   impl5-stage:
     build:
@@ -18,3 +19,12 @@ services:
       - "8082"
     ports:
       - "8082:8082"
+
+  impl5-stage2:
+    build:
+      context: impl5-stage2
+      dockerfile: src/main/docker/Dockerfile.jvm
+    expose:
+      - "8083"
+    ports:
+      - "8083:8083"

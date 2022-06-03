@@ -2,5 +2,12 @@
   "name": "source",
   "type": "stage",
   "location": "impl5-stage:8082",
-  "subStages": []
+  "subStages": [
+    {
+      "name": "source",
+      "type": "stage",
+      "location": "impl5-stage2:8083",
+      "subStages": []
+    }
+  ]
 }
