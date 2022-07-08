@@ -1,15 +1,9 @@
-<mxfile host="app.diagrams.net" modified="2022-07-08T13:52:59.043Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="nCBXKZr-041fUd5vja8t" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-08T13:54:48.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="qgxA-nHh9HNXaonX2SpT" version="20.0.4" type="github">
   <diagram id="XYTEaQDV3CCzF-M_5A2S" name="Page-1">
-    <mxGraphModel dx="2629" dy="555" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
+    <mxGraphModel dx="2629" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="4036" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-38" value="&lt;p style=&quot;line-height: 1.2;&quot;&gt;Container&lt;/p&gt;" style="html=1;align=left;verticalAlign=top;spacingLeft=80;" vertex="1" parent="1">
-          <mxGeometry x="-1400" y="60" width="670" height="370" as="geometry" />
-        </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-36" value="Pipeline Module" style="shape=module;align=left;spacingLeft=0;align=left;verticalAlign=top;spacingLeft=80;" vertex="1" parent="1">
-          <mxGeometry x="-1380" y="100" width="620" height="300" as="geometry" />
-        </mxCell>
         <mxCell id="npUO0GXiYJaYX9q_g1Vm-163" value="Node" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="241.49" y="2890" width="1348.51" height="950" as="geometry" />
         </mxCell>
@@ -2159,8 +2153,23 @@
         <mxCell id="RVmlczL4C-Krr12yN-Dm-15" value="" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-19">
           <mxGeometry y="55.5" width="50" height="41" as="geometry" />
         </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-20" value="«abstract»&#xa;AbstractStage" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="-1180" y="140" width="190" height="104" as="geometry" />
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-43" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-1400" y="60" width="670" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-39" value="" style="group" vertex="1" connectable="0" parent="RVmlczL4C-Krr12yN-Dm-43">
+          <mxGeometry width="670" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-38" value="&lt;p style=&quot;line-height: 1.2;&quot;&gt;Container&lt;/p&gt;" style="html=1;align=left;verticalAlign=top;spacingLeft=80;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-39">
+          <mxGeometry width="670" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-36" value="Pipeline Module" style="shape=module;align=left;spacingLeft=0;align=left;verticalAlign=top;spacingLeft=80;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-39">
+          <mxGeometry x="20" y="40" width="620" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-40" value="" style="group" vertex="1" connectable="0" parent="RVmlczL4C-Krr12yN-Dm-43">
+          <mxGeometry x="40" y="80" width="593" height="242.5" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-20" value="«abstract»&#xa;AbstractStage" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-40">
+          <mxGeometry x="180" width="190" height="104" as="geometry" />
         </mxCell>
         <mxCell id="RVmlczL4C-Krr12yN-Dm-21" value="+ field: stages: AbstractStage" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-20">
           <mxGeometry y="26" width="190" height="26" as="geometry" />
@@ -2171,47 +2180,37 @@
         <mxCell id="RVmlczL4C-Krr12yN-Dm-23" value="+ method: execute" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-20">
           <mxGeometry y="78" width="190" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="RVmlczL4C-Krr12yN-Dm-25" target="RVmlczL4C-Krr12yN-Dm-20">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-1265" y="270" />
-              <mxPoint x="-1085" y="270" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-25" value="EventSource" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="-1360" y="330.5" width="190" height="52" as="geometry" />
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-25" value="EventSource" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-40">
+          <mxGeometry y="190.5" width="190" height="52" as="geometry" />
         </mxCell>
         <mxCell id="RVmlczL4C-Krr12yN-Dm-26" value="+ method: executeSelf" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-25">
           <mxGeometry y="26" width="190" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="RVmlczL4C-Krr12yN-Dm-27" target="RVmlczL4C-Krr12yN-Dm-20">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-1085" y="300" />
-              <mxPoint x="-1085" y="300" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-27" value="EventRefiner" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="-1160" y="330.5" width="190" height="52" as="geometry" />
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-27" value="EventRefiner" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-40">
+          <mxGeometry x="200" y="190.5" width="190" height="52" as="geometry" />
         </mxCell>
         <mxCell id="RVmlczL4C-Krr12yN-Dm-28" value="+ method: executeSelf" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-27">
           <mxGeometry y="26" width="190" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="RVmlczL4C-Krr12yN-Dm-29" target="RVmlczL4C-Krr12yN-Dm-20">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-862" y="270" />
-              <mxPoint x="-1085" y="270" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="RVmlczL4C-Krr12yN-Dm-29" value="EventSyslogSink" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="-957" y="330.5" width="190" height="52" as="geometry" />
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-29" value="EventSyslogSink" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-40">
+          <mxGeometry x="403" y="190.5" width="190" height="52" as="geometry" />
         </mxCell>
         <mxCell id="RVmlczL4C-Krr12yN-Dm-30" value="+ method: executeSelf" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="RVmlczL4C-Krr12yN-Dm-29">
           <mxGeometry y="26" width="190" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="RVmlczL4C-Krr12yN-Dm-40" source="RVmlczL4C-Krr12yN-Dm-25" target="RVmlczL4C-Krr12yN-Dm-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="RVmlczL4C-Krr12yN-Dm-40" source="RVmlczL4C-Krr12yN-Dm-27" target="RVmlczL4C-Krr12yN-Dm-20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="275" y="160" />
+              <mxPoint x="275" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RVmlczL4C-Krr12yN-Dm-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="RVmlczL4C-Krr12yN-Dm-40" source="RVmlczL4C-Krr12yN-Dm-29" target="RVmlczL4C-Krr12yN-Dm-20">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
